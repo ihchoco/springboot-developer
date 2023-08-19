@@ -1,0 +1,41 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.0.2'
+    id 'io.spring.dependency-management' version '1.1.0'
+}
+
+group 'com.safejibsa'
+version '1.0-SNAPSHOT'
+sourceCompatibility = '17'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.projectlombok:lombok:1.18.22'//스프링 데이터 JPA
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    runtimeOnly 'com.h2database:h2' //인메모리 데이터 베이스
+
+    implementation 'org.springframework.boot:spring-boot-starter-security' //스프링 시큐리티를 사용하기 위한 스타터 추가
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6' //타임리프에서 스프링 시큐리티를 사용하기 위한 의존성 추가
+    testImplementation 'org.springframework.security:spring-security-test' //스프링 시큐리티를 테스트하기 위한 의존성 추가
+
+
+    compileOnly 'org.projectlombok:lombok'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    annotationProcessor 'org.projectlombok:lombok' //Gradle 5.x 이상 부터는 여기를 추가해주어야 에러가 발생하지 않는다(5.x 미만은 추가해주지 않아도 괜찮다)
+
+    testAnnotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.projectlombok:lombok'
+    implementation 'io.jsonwebtoken:jjwt:0.9.1' // 자바 JWT 라이브러리
+    implementation 'javax.xml.bind:jaxb-api:2.3.1' // XML 문서와 JAVA 객체 간 매핑 자동화
+}
+
+test {
+    useJUnitPlatform()
+}
